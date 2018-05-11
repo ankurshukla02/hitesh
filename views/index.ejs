@@ -1,0 +1,59 @@
+<% include partials/header %>
+<div class="jumbotron text-center">
+  <h1>Rank Me Online Blog</h1>
+</div>
+  
+<div class="container">
+  <div class="row">
+  <% users.forEach(function(user){ %>
+    <div class="col-sm-6">
+      <h3 class="text-center"><%= user.title %></h3>
+      <p>
+      <span class="text-left"><%= user.first_name %>&nbsp<%= user.last_name %></span>
+      <span class="text-right" style="float:right"><%= user.date %></span>
+      </p>
+      <p><%= user.description %></p>
+    </div>
+    <% }) %>
+  </div>
+</div>
+
+
+
+
+<div class = "container">
+	<h1>Add Customer</h1>
+	<% if (errors != undefined){ %>
+		<ul>
+		<% errors.forEach(function(error){ %>
+			<li><%= error.msg %></li>
+		<% }) %>
+		</ul>
+	<% } %>
+
+	<form method = "POST" action="/users/add">
+		<lable>Title</lable><br>
+		<input type ="text" name="title">
+		<br>
+
+		<lable>First Name</lable><br>
+		<input type ="text" name="first_name">
+		<br>
+
+		<lable>Last Name</lable><br>
+		<input type ="text" name="last_name">
+		<br>
+
+		<lable>Date</lable><br>
+		<input type ="text" name="date">
+		<br>
+
+		<lable>Description</lable><br>
+		<input type ="text" name="description">
+		<br><br>
+		<input type = "submit"  value="Submit">
+	</form>
+	
+	</div>
+<% include partials/footer %>
+
